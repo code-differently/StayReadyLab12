@@ -43,4 +43,29 @@ public class CharacterCheckerTest
         Boolean expected = true;
         Assert.assertEquals(expected, actual);
     }
+    @Test
+    public void specialCaseCheckerTest()
+    {
+        //Given 
+        OpenCloseChecker openCloseChecker = new OpenCloseChecker();
+        String input = "\'";
+        Character opening = '\'';
+        Character closing = '\'';
+        //Then 
+        Boolean actual = openCloseChecker.specialCaseChecker(input, opening, closing);
+        Boolean expected = false;
+        Assert.assertEquals(expected, actual);
+    }
+    @Test
+    public void specialCaseCheckerTest2()
+    {
+        //Given 
+        OpenCloseChecker openCloseChecker = new OpenCloseChecker();
+        String input = "\" \" ";
+        Character opening = '\"';
+        Character closing = '\"';
+        Boolean actual = openCloseChecker.specialCaseChecker(input, opening, closing);
+        Boolean expected = true;
+        Assert.assertEquals(expected, actual);
+    }
 }

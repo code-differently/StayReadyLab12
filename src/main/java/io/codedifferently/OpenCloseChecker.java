@@ -1,5 +1,4 @@
 package io.codedifferently;
-
 import java.util.Stack;
 
 public class OpenCloseChecker {
@@ -69,4 +68,29 @@ public class OpenCloseChecker {
         }
         return isClosed;
     }
+
+    public Boolean specialCaseChecker(String input, Character opening, Character closing)
+    {
+        Stack<Character> stack = new Stack<Character>();
+        Boolean isClosed = false;
+        for(int i =0; i<input.length(); i++)
+        {
+            if(input.charAt(i)== opening && stack.contains(opening)==true)
+            {
+                stack.pop();
+            }
+            if(input.charAt(i) == opening && stack.contains(opening)== false)
+            {
+                stack.push(opening);
+            }
+        }
+        if(stack.empty() == true)
+        {
+            isClosed = true;
+        }
+
+        return isClosed;
+
+    }
+    
 }

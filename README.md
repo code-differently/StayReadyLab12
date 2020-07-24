@@ -29,7 +29,7 @@ output: `true`
 
 -
 
-input: `"a(bc(d)))"
+input: `"a(bc(d)))"'
 
 output: `false`
 
