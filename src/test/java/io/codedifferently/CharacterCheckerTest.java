@@ -30,5 +30,17 @@ public class CharacterCheckerTest
         //Then
         Assert.assertEquals(expected, actual);
     }
-
+    @Test
+    public void characterCheckerTest3 ()
+    {
+        //Given 
+        OpenCloseChecker openCloseChecker = new OpenCloseChecker();
+        String input = "a<bcd<ef>>";
+        Character opening = '<';
+        Character closing = '>';
+        //Then 
+        Boolean actual = openCloseChecker.characterChecker(input, opening, closing);
+        Boolean expected = true;
+        Assert.assertEquals(expected, actual);
+    }
 }
