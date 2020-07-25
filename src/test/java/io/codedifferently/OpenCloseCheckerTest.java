@@ -11,7 +11,7 @@ public class OpenCloseCheckerTest {
         // Given
         String test="a(aknkn)m)mxk)k(jj(jj";
         // When
-        boolean actual=OpenCloseChecker.parenthesisChecker(test);
+        boolean actual=OpenCloseChecker.check(test,'(',')');
 
         // Then
         Assert.assertFalse(actual);
@@ -22,7 +22,7 @@ public class OpenCloseCheckerTest {
         // Given
         String test="a(b)c(d)e(f)g";
         // When
-        boolean actual=OpenCloseChecker.parenthesisChecker(test);
+        boolean actual=OpenCloseChecker.check(test,'(',')');
 
         // Then
         Assert.assertTrue(actual);
@@ -34,7 +34,7 @@ public class OpenCloseCheckerTest {
         String test="a{aknkn}m}mxk}k{jj{jj";
 
         // When
-        boolean actual=OpenCloseChecker.curlyBracketChecker(test);
+        boolean actual=OpenCloseChecker.check(test,'{','}');
 
         // Then
         Assert.assertFalse(actual);
@@ -46,7 +46,7 @@ public class OpenCloseCheckerTest {
         String test="a{b}c{d}e{f}g";
 
         // When
-        boolean actual=OpenCloseChecker.curlyBracketChecker(test);
+        boolean actual=OpenCloseChecker.check(test,'{','}');
 
         // Then
         Assert.assertTrue(actual);
@@ -58,7 +58,7 @@ public class OpenCloseCheckerTest {
         String test="{a}{{}}";
 
         // When
-        boolean actual=OpenCloseChecker.curlyBracketChecker(test);
+        boolean actual=OpenCloseChecker.check(test,'{','}');
 
         // Then
         Assert.assertTrue(actual);
@@ -71,7 +71,7 @@ public class OpenCloseCheckerTest {
         String test="[][]]]";
 
         // When
-        boolean actual=OpenCloseChecker.squareBracketChecker(test);
+        boolean actual=OpenCloseChecker.check(test,'[',']');
 
         // Then
         Assert.assertFalse(actual);
@@ -83,7 +83,7 @@ public class OpenCloseCheckerTest {
         String test="[[][][]]";
 
         // When
-        boolean actual=OpenCloseChecker.squareBracketChecker(test);
+        boolean actual=actual=OpenCloseChecker.check(test,'[',']');
 
         // Then
         Assert.assertTrue(actual);
@@ -95,7 +95,7 @@ public class OpenCloseCheckerTest {
         String test="<>>>>>>>>";
 
         // When
-        boolean actual=OpenCloseChecker.triangleBracketChecker(test);
+        boolean actual=OpenCloseChecker.check(test,'<','>');
 
         // Then
         Assert.assertFalse(actual);
@@ -107,7 +107,7 @@ public class OpenCloseCheckerTest {
         String test="<<<<>";
 
         // When
-        boolean actual=OpenCloseChecker.triangleBracketChecker(test);
+        boolean actual=OpenCloseChecker.check(test,'<','>');
 
         // Then
         Assert.assertFalse(actual);
