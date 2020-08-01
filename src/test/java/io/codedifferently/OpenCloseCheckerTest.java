@@ -38,7 +38,7 @@ public class OpenCloseCheckerTest {
 
         boolean actual = openCloseChecker.openNCloseChecker("a(bc(d)))");
 
-        Assert.assertFalse(actual);
+        Assert.assertEquals(false,actual);
     }
 
     @Test
@@ -56,7 +56,7 @@ public class OpenCloseCheckerTest {
 
         boolean actual = openCloseChecker.openNCloseChecker("{grebtrshythb}");
 
-        Assert.assertFalse(actual);
+        Assert.assertEquals(false,actual);
     }
 
 }
