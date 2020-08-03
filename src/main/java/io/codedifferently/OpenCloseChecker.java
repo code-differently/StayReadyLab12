@@ -1,64 +1,93 @@
 package io.codedifferently;
 
 import java.util.HashMap;
+import java.util.Stack;
 
 public class OpenCloseChecker {
 
-    private Character openChar;
 
-    private Character closingChar;
+    private Stack<Character> symbolStack;
 
-    private HashMap<Character, Integer> wrapers;
+    public OpenCloseChecker(){
 
-    private boolean rightNumOfClosings(Integer x, Integer y) {
-
-        if (x == y){
-
-             return true;
-        }
-        return false;
+        symbolStack = new Stack<>();
     }
 
-    public boolean symbolChecker (String x){
+    public boolean correctFormating(String x) {
 
-
-        wrapers = new HashMap<Character, Integer>();
-
-        wrapers.put(getOpenChar(), 0);
-        wrapers.put(getClosingChar(), 0);
-
+        String temp = "";
+        String match = "";
+        x = x.replaceAll("[a-z]", "");
 
         for(int i = 0; i < x.length(); i++) {
 
-            if (wrapers.containsKey(x.charAt(i))){
+            symbolStack.push(x.charAt(i));
+            if(symbolStack.peek() == ')' && symbolStack.size() > 1){
+                temp += symbolStack.pop();
+                temp += symbolStack.pop();
+                if ( !(temp.equals(")(")) ) {
 
-                wrapers.put(x.charAt(i), wrapers.get(x.charAt(i)) + 1);
+                    return false;
+                } else {
+                    temp = "";
+                }
 
+            } else if(symbolStack.peek() == ']' && symbolStack.size() > 1){
+
+                temp += symbolStack.pop();
+                temp += symbolStack.pop();
+                if ( !(temp.equals("][")) ) {
+
+                    return false;
+                } else {
+                    temp = "";
+                }
+            }else if(symbolStack.peek() == '}' && symbolStack.size() > 1){
+
+                temp += symbolStack.pop();
+                temp += symbolStack.pop();
+                if ( !(temp.equals("}{")) ) {
+
+                    return false;
+                } else {
+                    temp = "";
+                }
+            } else if(symbolStack.peek() == '\'' && symbolStack.size() > 1){
+
+                temp += symbolStack.pop();
+                temp += symbolStack.pop();
+                if ( !(temp.equals("''")) ) {
+
+                    return false;
+                } else {
+                    temp = "";
+                }
+            } else if(symbolStack.peek() == '\"' && symbolStack.size() > 1){
+
+                temp += symbolStack.pop();
+                temp += symbolStack.pop();
+                if ( !(temp.equals("\"\"")) ) {
+
+                    return false;
+                } else {
+                    temp = "";
+                }
+            }else if(symbolStack.peek() == '>' && symbolStack.size() > 1){
+
+                temp += symbolStack.pop();
+                temp += symbolStack.pop();
+                if ( !(temp.equals("><")) ) {
+
+                    return false;
+                } else {
+                    temp = "";
+                }
             }
-        }
-
-        if (getOpenChar() != getClosingChar()) {
-            return rightNumOfClosings(wrapers.get(getOpenChar()), wrapers.get(getClosingChar()));
-        } else {
-
-           return (wrapers.get(getOpenChar()) % 2 == 0);
 
         }
+
+        return symbolStack.isEmpty();
     }
 
-    public Character getOpenChar() {
-        return openChar;
-    }
 
-    public void setOpenChar(Character openChar) {
-        this.openChar = openChar;
-    }
-
-    public Character getClosingChar() {
-        return closingChar;
-    }
-
-    public void setClosingChar(Character closingChar) {
-        this.closingChar = closingChar;
-    }
 }

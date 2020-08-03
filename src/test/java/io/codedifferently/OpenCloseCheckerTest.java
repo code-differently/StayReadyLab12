@@ -16,72 +16,40 @@ public class OpenCloseCheckerTest {
     }
 
     @Test
-    public void symbolCheckerTest1 () {
+    public void correctFormatingTest1() {
 
-        givenInput = "((xX))";
-        testChecker.setOpenChar('(');
-        testChecker.setClosingChar(')');
-        Assert.assertTrue("parenthesisChecker returns true test given input is: " + givenInput, testChecker.symbolChecker(givenInput));
+        givenInput = "a(b)c(d)e(f)g";
 
-        givenInput = "[[xX]]";
-        testChecker.setOpenChar('[');
-        testChecker.setClosingChar(']');
-        Assert.assertTrue("parenthesisChecker returns true test given input is: " + givenInput, testChecker.symbolChecker(givenInput));
+        Assert.assertTrue(testChecker.correctFormating(givenInput));
 
-        givenInput = "<<xX>>";
-        testChecker.setOpenChar('<');
-        testChecker.setClosingChar('>');
-        Assert.assertTrue("parenthesisChecker returns true test given input is: " + givenInput, testChecker.symbolChecker(givenInput));
 
-        givenInput = "{{xX}}";
-        testChecker.setOpenChar('{');
-        testChecker.setClosingChar('}');
-        Assert.assertTrue("parenthesisChecker returns true test given input is: " + givenInput, testChecker.symbolChecker(givenInput));
-
-        givenInput = "\"\"xX\"\"";
-        testChecker.setOpenChar('"');
-        testChecker.setClosingChar('"');
-        Assert.assertTrue("parenthesisChecker returns true test given input is: " + givenInput, testChecker.symbolChecker(givenInput));
-
-        givenInput = "\'\'xX\'\'";
-        testChecker.setOpenChar('\'');
-        testChecker.setClosingChar('\'');
-        Assert.assertTrue("parenthesisChecker returns true test given input is: " + givenInput, testChecker.symbolChecker(givenInput));
     }
 
     @Test
-    public void parenthesisCheckerTest2 () {
+    public void correctFormatingTest2() {
 
-        givenInput = "((xX)";
-        testChecker.setOpenChar('(');
-        testChecker.setClosingChar(')');
-        Assert.assertFalse("parenthesisChecker returns true test given input is: " + givenInput, testChecker.symbolChecker(givenInput));
+        givenInput = "a(bcd(ef))";
 
-        givenInput = "[[xX]";
-        testChecker.setOpenChar('[');
-        testChecker.setClosingChar(']');
-        Assert.assertFalse("parenthesisChecker returns true test given input is: " + givenInput, testChecker.symbolChecker(givenInput));
-
-        givenInput = "<<xX>";
-        testChecker.setOpenChar('<');
-        testChecker.setClosingChar('>');
-        Assert.assertFalse("parenthesisChecker returns true test given input is: " + givenInput, testChecker.symbolChecker(givenInput));
-
-        givenInput = "{{xX}";
-        testChecker.setOpenChar('{');
-        testChecker.setClosingChar('}');
-        Assert.assertFalse("parenthesisChecker returns true test given input is: " + givenInput, testChecker.symbolChecker(givenInput));
-
-        givenInput = "\"\"xX\"";
-        testChecker.setOpenChar('"');
-        testChecker.setClosingChar('"');
-        Assert.assertFalse("parenthesisChecker returns true test given input is: " + givenInput, testChecker.symbolChecker(givenInput));
-
-        givenInput = "\'\'xX\'";
-        testChecker.setOpenChar('\'');
-        testChecker.setClosingChar('\'');
-        Assert.assertFalse("parenthesisChecker returns true test given input is: " + givenInput, testChecker.symbolChecker(givenInput));
+        Assert.assertTrue(testChecker.correctFormating(givenInput));
     }
+
+    @Test
+    public void correctFormatingTest3() {
+
+        givenInput = ")";
+
+        Assert.assertFalse(testChecker.correctFormating(givenInput));
+    }
+
+    @Test
+    public void correctFormatingTest4() {
+
+        givenInput = "a(bc(d)))";
+
+        Assert.assertFalse(testChecker.correctFormating(givenInput));
+    }
+
+
 
 
 }
