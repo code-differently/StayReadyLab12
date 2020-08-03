@@ -31,7 +31,7 @@ public class OpenCloseCheckerTest {
         Assert.assertTrue(actual5);
     }
 
-    @Test(expected = EmptyStackException.class)
+    @Test/*(expected = EmptyStackException.class) --- Don't need because of the try/catch statement in the function*/
     public void isBalancedv1_Test2(){
         // Given
         String randStr1 = "(shama())lama)";     // not balanced
@@ -83,7 +83,7 @@ public class OpenCloseCheckerTest {
         Assert.assertTrue(actual6);
     }
 
-    @Test(expected = EmptyStackException.class)
+    @Test/*(expected = EmptyStackException.class) --- Don't need because of the try/catch statement in the function*/
     public void isBalancedv2_Test2(){
         // Given
         String randStr1 = "(sh[])ma}";     // not balanced
@@ -93,11 +93,11 @@ public class OpenCloseCheckerTest {
         String test2 = "{";
 
         // When
-        boolean actual1 = OpenCloseChecker.isBalancedv1(randStr1);
-        boolean actual2 = OpenCloseChecker.isBalancedv1(randStr2);
-        boolean actual3 = OpenCloseChecker.isBalancedv1(randStr3);
-        boolean actual4 = OpenCloseChecker.isBalancedv1(test1);
-        boolean actual5 = OpenCloseChecker.isBalancedv1(test2);
+        boolean actual1 = OpenCloseChecker.isBalancedv2(randStr1);
+        boolean actual2 = OpenCloseChecker.isBalancedv2(randStr2);
+        boolean actual3 = OpenCloseChecker.isBalancedv2(randStr3);
+        boolean actual4 = OpenCloseChecker.isBalancedv2(test1);
+        boolean actual5 = OpenCloseChecker.isBalancedv2(test2);
 
         // Then
         Assert.assertFalse(actual1);
