@@ -2,6 +2,7 @@ package io.codedifferently;
 
 import org.junit.Test;
 import org.junit.Assert;
+import org.junit.Before;
 public class OpenCloseCheckerTest {
     
    
