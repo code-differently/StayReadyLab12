@@ -26,7 +26,8 @@ public class OpenCloseChecker {
                     check.pop();
                 }else if(check.peek() == '"' && temp == '"'){
                     check.pop();
-                }
+                }else
+                    return false;
             }
         }
         return check.isEmpty();

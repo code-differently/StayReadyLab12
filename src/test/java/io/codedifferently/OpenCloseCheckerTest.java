@@ -42,4 +42,40 @@ public class OpenCloseCheckerTest {
         Assert.assertFalse(OpenCloseChecker.openCloseChecker(input));
     }
 
+    @Test
+    public void openCloseCheckerTest5(){
+        //Given
+        String input = "a(bc{d})";
+
+        //Assert
+        Assert.assertTrue(OpenCloseChecker.openCloseChecker(input));
+    }
+
+    @Test
+    public void openCloseCheckerTest6(){
+        //Given
+        String input = "<a(bc(d))>";
+
+        //Assert
+        Assert.assertTrue(OpenCloseChecker.openCloseChecker(input));
+    }
+
+    @Test
+    public void openCloseCheckerTest7(){
+        //Given
+        String input = ">";
+
+        //Assert
+        Assert.assertFalse(OpenCloseChecker.openCloseChecker(input));
+    }
+
+    @Test
+    public void openCloseCheckerTest8(){
+        //Given
+        String input = "[GOAT]";
+
+        //Assert
+        Assert.assertTrue(OpenCloseChecker.openCloseChecker(input));
+    }
+
 }
